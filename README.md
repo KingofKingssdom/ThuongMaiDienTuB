@@ -1,4 +1,4 @@
-# 🛒 E-Commerce Backend System API (ASP.NET Core)
+# 🛒 E-Commerce Backend System API
 
 Hệ thống API Backend hỗ trợ cho nền tảng Thương mại Điện tử, được xây dựng theo kiến trúc Clean Architecture mô-đun hóa, bảo mật với JWT Authentication và tích hợp thanh toán trực tuyến VNPay.
 
