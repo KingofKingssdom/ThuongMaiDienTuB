@@ -27,6 +27,12 @@ use App\Repositories\Contracts\OrderRepositoryInterface;
 use App\Repositories\Eloquent\OrderRepository;
 use App\Repositories\Contracts\OrderItemRepositoryInterface;
 use App\Repositories\Eloquent\OrderItemRepository;
+use App\Repositories\Contracts\SpecificationAttributeRepositoryInterface;
+use App\Repositories\Eloquent\SpecificationAttributeRepository;
+use App\Repositories\Contracts\SpecificationGroupRepositoryInterface;
+use App\Repositories\Eloquent\SpecificationGroupRepository;
+use App\Repositories\Contracts\SpecificationValueRepositoryInterface;
+use App\Repositories\Eloquent\SpecificationValueRepository;
 
 use App\Services\Implementations\UserService;
 use App\Services\Interfaces\UserServiceInterface;
@@ -45,6 +51,12 @@ use App\Services\Implementations\ProductVariantService;
 use App\Services\Interfaces\OrderServiceInterface;
 use App\Services\Implementations\OrderService;
 use App\Services\Implementtations\VNPayService;
+use App\Services\Interfaces\SpecificationAttributeServiceInterface;
+use App\Services\Implementations\SpecificationAttributeService;
+use App\Services\Interfaces\SpecificationGroupServiceInterface;
+use App\Services\Implementations\SpecificationGroupService;
+use App\Services\Interfaces\SpecificationValueServiceInterface;
+use App\Services\Implementations\SpecificationValueService;
 class RepositoryServiceProvider extends ServiceProvider
 {
     /**
@@ -64,7 +76,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ProductVariantRepositoryInterface::class, ProductVariantRepository::class);
         $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
         $this->app->bind(OrderItemRepositoryInterface::class, OrderItemRepository::class);
-
+        $this->app->bind(SpecificationAttributeRepositoryInterface::class, SpecificationAttributeRepository::class);
+        $this->app->bind(SpecificationGroupRepositoryInterface::class, SpecificationGroupRepository::class);
+        $this->app->bind(SpecificationValueRepositoryInterface::class, SpecificationValueRepository::class);
+        
         $this->app->bind(UserServiceInterface::class, UserService::class);
         $this->app->bind(RoleServiceInterface::class, RoleService::class);
         $this->app->bind(AuthServiceInterface::class, AuthService::class);
@@ -74,6 +89,9 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ProductVariantServiceInterface::class, ProductVariantService::class);
         $this->app->bind(OrderServiceInterface::class, OrderService::class);
         $this->app->bind(VNPayService::class);
+        $this->app->bind(SpecificationAttributeServiceInterface::class, SpecificationAttributeService::class);
+        $this->app->bind(SpecificationGroupServiceInterface::class, SpecificationGroupService::class);
+        $this->app->bind(SpecificationValueServiceInterface::class, SpecificationValueService::class);
     }
 
     /**

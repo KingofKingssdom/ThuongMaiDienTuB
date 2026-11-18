@@ -31,7 +31,7 @@ class RoleRepository implements RoleRepositoryInterface
 
     public function getByNameAsync(string $name): ?Role
     {
-        // Tương đương với NormalizedName trong Identity của C#
+        
         return Role::where('name', $name)->first();
     }
 

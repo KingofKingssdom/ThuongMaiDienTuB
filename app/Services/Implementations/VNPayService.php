@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Order; // Model Order của bạn
+use App\Models\Order; 
 use Exception;
 
 class VNPayService
@@ -17,7 +17,7 @@ class VNPayService
             throw new Exception("Đơn hàng không tồn tại.");
         }
 
-        // Xử lý chuỗi mã đơn hàng (giống logic C#)
+        
         $parts = explode('-', $order->order_code);
         $cleanOrderInfo = count($parts) >= 2 ? ($parts[0] . $parts[1]) : $order->order_code;
 
@@ -44,7 +44,7 @@ class VNPayService
             "vnp_CreateDate" => $startTime,
         ];
 
-        // Sắp xếp các tham số theo bảng chữ cái A-Z (Rất quan trọng để khớp mã Hash)
+        // Sắp xếp các tham số theo bảng chữ cái A-Z
         ksort($vnp_Params);
 
         $hashData = "";
@@ -64,7 +64,7 @@ class VNPayService
         $vnp_Url = $vnp_PayUrl . "?" . rtrim($query, '&');
 
         if (isset($vnp_HashSecret)) {
-            // Tạo mã băm bảo mật HMAC-SHA512 khớp hoàn toàn với C#
+           
             $vnpSecureHash = hash_hmac('sha512', $hashData, $vnp_HashSecret);
             $vnp_Url .= '&vnp_SecureHash=' . $vnpSecureHash;
         }

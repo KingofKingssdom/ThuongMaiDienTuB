@@ -24,7 +24,7 @@ class CartItem extends Model
 
     public function productVariant(): BelongsTo
     {
-        // Giả sử bạn có model ProductVariant
+        
         return $this->belongsTo(ProductVariant::class, 'product_variant_id');
     }
 }

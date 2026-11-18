@@ -26,7 +26,7 @@ class Category extends Model
         return $this->hasMany(Product::class, 'category_id');
     }
 
-    // Quan hệ một - nhiều với SpecificationGroup (nếu có)
+    // Quan hệ một - nhiều với SpecificationGroup 
     public function specificationGroups(): HasMany
     {
         return $this->hasMany(SpecificationGroup::class, 'category_id');

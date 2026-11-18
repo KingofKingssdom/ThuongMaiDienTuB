@@ -25,7 +25,7 @@ class BrandRepository implements BrandRepositoryInterface
 
     public function getByCategoryIdAsync(int $categoryId): Collection
     {
-        // Lấy danh sách thương hiệu thuộc về category thông qua bảng trung gian category_brands
+        
         return Brand::whereHas('categories', function ($query) use ($categoryId) {
             $query->where('categories.id', $categoryId);
         })->get();

@@ -9,6 +9,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductVariantController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\SpecificationAttributeController;
+use App\Http\Controllers\SpecificationGroupController;
+use App\Http\Controllers\SpecificationValueController;
+
 
 Route::prefix('auth')->group(function () {
     Route::post('register', [AuthController::class, 'register']);
@@ -92,3 +96,29 @@ Route::middleware(['auth:api'])->prefix('payment')->group(function () {
 });
 
 Route::get('vnpay/callback', [PaymentController::class, 'paymentCallback']);
+
+
+Route::middleware(['auth:api'])->group(function () {
+    
+    
+    Route::prefix('specificationattribute')->group(function () {
+        Route::get('', [SpecificationAttributeController::class, 'index']);
+        Route::get('{id}', [SpecificationAttributeController::class, 'show']);
+        Route::post('', [SpecificationAttributeController::class, 'store']); // (Thực tế phân quyền Admin cho route tạo)
+    });
+
+    
+    Route::prefix('specificationgroup')->group(function () {
+        Route::get('', [SpecificationGroupController::class, 'index']);
+        Route::get('{id}', [SpecificationGroupController::class, 'show']);
+        Route::post('', [SpecificationGroupController::class, 'store']);
+    });
+
+    
+    Route::prefix('specificationvalue')->group(function () {
+        Route::get('', [SpecificationValueController::class, 'index']);
+        Route::get('{id}', [SpecificationValueController::class, 'show']);
+        Route::post('', [SpecificationValueController::class, 'store']);
+    });
+
+});

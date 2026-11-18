@@ -13,9 +13,7 @@ class RoleController extends Controller
 
     public function __construct(RoleServiceInterface $roleService)
     {
-        // Áp dụng middleware kiểm tra quyền Admin cho toàn bộ các action trong Controller này (tương đương [Authorize(Roles = "Admin")])
-        // Lưu ý: Bạn cần cấu hình guard hoặc middleware role phù hợp với package jwt-auth hoặc Spatie permission nếu có.
-        // $this->middleware('auth:api');
+        
     }
 
     public function store(Request $request): JsonResponse

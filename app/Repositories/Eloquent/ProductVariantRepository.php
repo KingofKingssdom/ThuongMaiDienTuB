@@ -25,8 +25,7 @@ class ProductVariantRepository implements ProductVariantRepositoryInterface
 
     public function updateStockAsync(): void
     {
-        // Trong Laravel Eloquent các thao tác update được thực thi ngay lập tức qua model,
-        // hàm này giữ lại trống để đồng bộ kiến trúc với C#.
+    
     }
 
     public function updateAsync(ProductVariant $productVariant, array $data): ProductVariant

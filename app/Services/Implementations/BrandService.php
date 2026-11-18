@@ -113,7 +113,7 @@ class BrandService implements BrandServiceInterface
             return null;
         }
 
-        // Nếu database của bạn có cột mềm xóa (deleted_at), hoặc bạn có thể xóa trực tiếp
+        
         $brandExisting->update(['deleted_at' => Carbon::now()]);
 
         return new BrandResource($brandExisting->load('categories'));

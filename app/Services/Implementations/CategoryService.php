@@ -70,7 +70,7 @@ class CategoryService implements CategoryServiceInterface
             return null;
         }
 
-        // Xóa mềm hoặc cập nhật cột deleted_at (nếu có trong migration bảng categories)
+        
         $this->categoryRepository->updateAsync($categoryExisting, [
             'deleted_at' => Carbon::now()
         ]);

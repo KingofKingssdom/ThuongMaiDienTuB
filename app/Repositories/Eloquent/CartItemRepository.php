@@ -28,7 +28,7 @@ class CartItemRepository implements CartItemRepositoryInterface
 
     public function getAllByCartIdAsync(int $cartId): Collection
     {
-        // Tương đương .Include(c => c.ProductVariant).ThenInclude(p => p.Product)
+        
         return CartItem::where('cart_id', $cartId)
             ->with(['productVariant.product'])
             ->get();
@@ -36,8 +36,7 @@ class CartItemRepository implements CartItemRepositoryInterface
 
     public function updatePriceAtTimeAsync(): void
     {
-        // Trong Eloquent các thao tác update được lưu thẳng khi gọi save/update,
-        // hàm này giữ lại để tương thích kiến trúc.
+        
     }
 
     public function getAllCartItemByIdsAsync(array $cartItemIds, int $cartId): Collection
@@ -50,7 +49,7 @@ class CartItemRepository implements CartItemRepositoryInterface
 
     public function deleteCartItemByIdsAsync(array $cartItemIds): void
     {
-        // Tương đương với .ExecuteDeleteAsync() của EF Core
+       
         CartItem::whereIn('id', $cartItemIds)->delete();
     }
 }

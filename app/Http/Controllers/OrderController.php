@@ -19,7 +19,7 @@ class OrderController extends Controller
     // [Authorize(Roles = "Admin, User")] - Tạo đơn hàng từ giỏ hàng
     public function store(StoreOrderRequest $request): JsonResponse
     {
-        // Lấy ID của user đang đăng nhập từ JWT Token (tương đương User.FindFirstValue(ClaimTypes.NameIdentifier))
+       
         $userId = auth()->id();
 
         if (!$userId) {

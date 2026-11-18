@@ -11,7 +11,7 @@ class UserRepository implements UserRepositoryInterface
 {
     public function getAllAsync(): Collection
     {
-        // Tương đương với .Include(u => u.UserRoles).ThenInclude(ur => ur.Role)
+        
         return User::with('roles')->get();
     }
 
@@ -35,7 +35,7 @@ class UserRepository implements UserRepositoryInterface
         // Tạo mới user
         $user = User::create($data);
 
-        // Logic gắn role mặc định là 'USER' giống code C# của bạn
+        // Logic gắn role mặc định là 'USER' 
         $role = Role::where('name', 'USER')->first();
         if ($role) {
             // Sử dụng quan hệ belongsToMany (attach) để thêm vào bảng trung gian role_user
@@ -55,7 +55,7 @@ class UserRepository implements UserRepositoryInterface
     {
         $user = User::find($userId);
         if ($user) {
-            // sync() sẽ xóa các role cũ và gán role mới duy nhất này (tương đương xóa rồi thêm mới trong C#)
+            // sync() sẽ xóa các role cũ và gán role mới duy nhất này 
             $user->roles()->sync([$roleId]);
         }
     }
@@ -64,11 +64,11 @@ class UserRepository implements UserRepositoryInterface
     {
         $user = User::find($userId);
         if ($user) {
-            // Thay vì xóa cứng, cập nhật IsActive = false hoặc dùng SoftDelete
+            
             $user->IsActive = false;
             $user->save();
             
-            // Hoặc nếu bạn muốn dùng soft delete chuẩn Laravel: $user->delete();
+            
             return true;
         }
         return false;

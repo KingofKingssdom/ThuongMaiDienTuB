@@ -137,7 +137,7 @@ class ProductService implements ProductServiceInterface
             return null;
         }
 
-        // Cập nhật thời gian xóa mềm (nếu có cột deleted_at)
+        
         $this->productRepository->updateAsync($productExisting, [
             'deleted_at' => Carbon::now()
         ]);

@@ -47,7 +47,7 @@ class AuthService implements AuthServiceInterface
 
         Log::info("User registered: " . $user->email);
 
-        // Tự động tạo giỏ hàng (Cart) cho user mới đăng ký giống bên C#
+        
         $this->cartRepository->addAsync([
             'user_id' => $user->id
         ]);
